@@ -10,7 +10,7 @@ public class LoanRepayment {
 	private double interestRate;
 
 	
-	public LoanRepayment() {
+	public LoanRepayment() {   
 		super();
 		
 	}
