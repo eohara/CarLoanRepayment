@@ -9,7 +9,6 @@ public class LoanRepayment {
 	private double loanLength;
 	private double interestRate;
 
-	
 	public LoanRepayment() {   
 		super();
 		
@@ -63,25 +62,34 @@ public class LoanRepayment {
 		this.interestRate = interestRate;
 	}
 
-
-
 	public double monthlyCarPayment(double iCarCost, double iInterestRate, double iLoanLength) {
 		
 		carCost = iCarCost;
 		interestRate = iInterestRate;
 		loanLength = iLoanLength;
 		
-		double monthlyPMT = (iCarCost*iInterestRate/12)/Math.pow(((1-(1+iInterestRate/12))) , (-(iLoanLength/12)*12));
+		double monthlyPMT = ((iInterestRate/12) * iCarCost) / (1-(Math.pow((1+(iInterestRate/12)), ((-1)*iLoanLength))));
 	
 	
-		return monthlyPMT;
+		return monthlyPMT;  
 		
 	}
 
+	public double totalInterestPaid(double iCarCost, double iInterestRate, double iLoanLength) {
+		
+		carCost = iCarCost;
+		interestRate = iInterestRate;
+		loanLength = iLoanLength;
+		LoanRepayment lr = new LoanRepayment();
+		
+		double totalInterest = (lr.monthlyCarPayment(iCarCost, iInterestRate, iLoanLength) * iLoanLength) - iCarCost;
+		
+		return totalInterest;  
+	}
 
-	
+	 
  
-
+	
 
 }
 
